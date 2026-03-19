@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: notes-backend
+  template:
+    metadata:
+      labels:
+        app: notes-backend
+    spec:
+      containers:
+        - name: backend
+          # Replace with your published image or use a local image in your cluster
+          image: ibrahim/mern-notes-backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          env:
+            - name: dbURL
+              value: "mongodb://notes-mongo:27017/notes"
+            - name: PORT
+              value: "3000"

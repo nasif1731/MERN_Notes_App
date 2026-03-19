@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notes-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: notes-frontend
+  template:
+    metadata:
+      labels:
+        app: notes-frontend
+    spec:
+      containers:
+        - name: frontend
+          # Replace with your published image or use a local image in your cluster
+          image: ibrahim/mern-notes-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
