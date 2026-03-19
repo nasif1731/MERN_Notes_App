@@ -14,8 +14,15 @@ spec:
     spec:
       containers:
         - name: frontend
-          # Replace with your published image or use a local image in your cluster
-          image: ibrahim/mern-notes-frontend:latest
-          imagePullPolicy: IfNotPresent
+          # Using local Docker image
+          image: mern_notes_app-frontend:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi

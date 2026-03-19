@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: backend
-          # Replace with your published image or use a local image in your cluster
-          image: ibrahim/mern-notes-backend:latest
-          imagePullPolicy: IfNotPresent
+          # Using local Docker image
+          image: mern_notes_app-backend:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 3000
           env:
@@ -24,3 +24,10 @@ spec:
               value: "mongodb://notes-mongo:27017/notes"
             - name: PORT
               value: "3000"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
