@@ -37,3 +37,8 @@ app.use(
 // Routes
 const routes = require("./routes/routes");
 app.use(routes);
+
+// Health endpoint for Docker
+app.get('/', (req, res) => {
+  res.sendStatus(200);
+});
